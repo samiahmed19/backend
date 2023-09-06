@@ -4,3 +4,5 @@ git commit -m "this is a packagejson file"
 git  branch -M main
 git remote add origin "https://github.com/samiahmed19/backend.git"
 git push -u origin main
+
+git push -f origin main
