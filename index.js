@@ -1,20 +1,23 @@
-const express=require('express');
-const port =8000;
-const app=express();
+const express = require('express');
+const port = 8000;
+const app = express();
 
+// const data = require('./models/Data.json');
+// app.get('/users', (req, res) => {
+//     res.send({ data });
+// });
 
-// const data=require('./models/Data.json');
-// app.get('/users',(req,res)=>{
-//     res.send({data});
-// })
+const userRouters = require('./router/users');
+// app.use('/', userRouters);
+app.use('/api', userRouters);
 
-const userRouters=require('./router/users')
-app.use('/',userRouters)
+const profileRouter = require('./router/profiles');
+// app.use('/', profileRouter);
+app.use('/api', profileRouter);
 
-// app .listen is call backfuntion
-app.listen(port,function(err){
-    if(err){
-        console.log("Error is running on the serveer");
+app.listen(port, function (err) {
+    if (err) {
+        console.log("Error is running on the server");
     }
-    console.log(`server is running on port: ${port}`)
-})
+    console.log(`server is running on port: ${port}`);
+});
